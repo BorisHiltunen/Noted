@@ -1,7 +1,7 @@
 #Importing necessary modules or methods
 import pygame
 #Will be used soon
-from random import randint
+#from random import randint
 
 class Noted:
     #Initializing necessary attributes
