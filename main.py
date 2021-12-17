@@ -212,6 +212,15 @@ class Noted:
                     self.wrong_timing.play()
                     self.score -= 1
                     self.locked = True
+        
+        if self.note1_y > self.height:
+            self.note1_y = -100
+        if self.note2_y > self.height:
+            self.note2_y = -100
+        if self.note3_y > self.height:
+            self.note3_y = -100
+        if self.note4_y > self.height:
+            self.note4_y = -100
 
     # At the moment only watches y
     # therefore needs to be edited if interested in making multiple lanes for the notes
