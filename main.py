@@ -1,10 +1,16 @@
-#Importing necessary modules or methods
+"""main.py: Contains Noted class"""
+
 import pygame
 #Will be used soon
 #from random import randint
 
+
 class Noted:
-    #Initializing necessary attributes
+    """
+    Class that contains every necessary function
+    for making Noted app work as intended.
+    """
+
     def __init__(self):
 
         pygame.init()
@@ -48,15 +54,25 @@ class Noted:
         self.note4_x = 275
         self.note4_y = -600
         self.note4_hit_y = False
- 
+
+        self.line_x = False
+        self.line_y = False
+
+        self.used_note1 = ""
+        self.used_note2 = ""
+        self.used_note3 = ""
+        self.used_note4 = ""
+
+        self.used_button = ""
+
         self.display = pygame.display.set_mode((self.width, self.height))
- 
+
         pygame.display.set_caption("Noted")
- 
+
         self.loop()
 
-    #Function that downloads pictures
     def download_pictures(self):
+        """Function that downloads pictures."""
 
         self.background = pygame.image.load("background.png")
         self.button1 = pygame.image.load("button1.png")
@@ -65,18 +81,19 @@ class Noted:
         self.line_hover_over = pygame.image.load("line_hover_over.png")
         self.note = pygame.image.load("note.png")
 
-    # Function that is responsible that the line works as intended
     def line_engine(self):
+        """Function that is responsible that the line works as intended."""
 
         self.line_x = 275 >= self.x-self.line.get_width() and 275 <= self.x+self.line.get_width()
         self.line_y = 575 >= self.y-self.line.get_height() and 575 <= self.y+self.line.get_height()
 
-        if self.note1_hit_y == True or self.note2_hit_y == True or self.note3_hit_y == True or self.note4_hit_y == True:
+        if self.note1_hit_y or self.note2_hit_y or self.note3_hit_y or self.note4_hit_y:
             self.display.blit(self.line_hover_over, (0, 500))
         else:
             self.display.blit(self.line, (0, 500))
 
     def note_engine(self):
+        """Function that is responsible that the notes work as intended."""
 
         self.used_note1 = self.display.blit(self.note, (self.note1_x, self.note1_y))
         self.used_note2 = self.display.blit(self.note, (self.note2_x, self.note2_y))
@@ -103,116 +120,116 @@ class Noted:
         else:
             self.note4_hit_y = False
 
-        if self.note1_hit_y == True:
-            if self.locked == False:
-                if self.right == True:
+        if self.note1_hit_y:
+            if self.locked is False:
+                if self.right:
                     self.right_note.play()
                     self.score += 1
                     self.note1_y = -600
                     self.locked = True
-                elif self.left == True:
+                elif self.left:
                     self.right_note.play()
                     self.score += 1
                     self.note1_y = -600
                     self.locked = True
-                elif self.up == True:
+                elif self.up:
                     self.right_note.play()
                     self.score += 1
                     self.note1_y = -600
                     self.locked = True
-                elif self.down == True:
+                elif self.down:
                     self.right_note.play()
                     self.score += 1
                     self.note1_y = -600
                     self.locked = True
 
-        if self.note2_hit_y == True:
-            if self.locked == False:
-                if self.right == True:
+        if self.note2_hit_y:
+            if self.locked is False:
+                if self.right:
                     self.right_note.play()
                     self.score += 1
                     self.note2_y = -600
                     self.locked = True
-                elif self.left == True:
+                elif self.left:
                     self.right_note.play()
                     self.score += 1
                     self.note2_y = -600
                     self.locked = True
-                elif self.up == True:
+                elif self.up:
                     self.right_note.play()
                     self.score += 1
                     self.note2_y = -600
                     self.locked = True
-                elif self.down == True:
+                elif self.down:
                     self.right_note.play()
                     self.score += 1
                     self.note2_y = -600
                     self.locked = True
 
-        if self.note3_hit_y == True:
-            if self.locked == False:
-                if self.right == True:
+        if self.note3_hit_y:
+            if self.locked is False:
+                if self.right:
                     self.right_note.play()
                     self.score += 1
                     self.note3_y = -600
                     self.locked = True
-                elif self.left == True:
+                elif self.left:
                     self.right_note.play()
                     self.score += 1
                     self.note3_y = -600
                     self.locked = True
-                elif self.up == True:
+                elif self.up:
                     self.right_note.play()
                     self.score += 1
                     self.note3_y = -600
                     self.locked = True
-                elif self.down == True:
+                elif self.down:
                     self.right_note.play()
                     self.score += 1
                     self.note3_y = -600
                     self.locked = True
 
-        if self.note4_hit_y == True:
-            if self.locked == False:
-                if self.right == True:
+        if self.note4_hit_y:
+            if self.locked is False:
+                if self.right:
                     self.right_note.play()
                     self.score += 1
                     self.note4_y = -600
                     self.locked = True
-                elif self.left == True:
+                elif self.left:
                     self.right_note.play()
                     self.score += 1
                     self.note4_y = -600
                     self.locked = True
-                elif self.up == True:
+                elif self.up:
                     self.right_note.play()
                     self.score += 1
                     self.note4_y = -600
                     self.locked = True
-                elif self.down == True:
+                elif self.down:
                     self.right_note.play()
                     self.score += 1
                     self.note4_y = -600
                     self.locked = True
         else:
-            if self.locked == False:
-                if self.right == True:
+            if self.locked is False:
+                if self.right:
                     self.wrong_timing.play()
                     self.score -= 1
                     self.locked = True
-                elif self.left == True:
+                elif self.left:
                     self.wrong_timing.play()
                     self.score -= 1
                     self.locked = True
-                elif self.up == True:
+                elif self.up:
                     self.wrong_timing.play()
                     self.score -= 1
                     self.locked = True
-                elif self.down == True:
+                elif self.down:
                     self.wrong_timing.play()
                     self.score -= 1
                     self.locked = True
-        
+
         if self.note1_y > self.height:
             self.note1_y = -100
         if self.note2_y > self.height:
@@ -222,8 +239,9 @@ class Noted:
         if self.note4_y > self.height:
             self.note4_y = -100
 
-    # At the moment only watches y
-    # therefore needs to be edited if interested in making multiple lanes for the notes
+    # At the moment only watches y.
+    # Therefore needs to be edited
+    # if interested in making multiple lanes for the notes.
 
     # Function that is responsible that the notes work as intended
     """def note_engine(self):
@@ -234,7 +252,7 @@ class Noted:
 
         for i in range(self.note_amount):
             self.falling_notes.append([-1000,self.height])
-            
+
         for i in range(self.note_amount):
             #THIS NEEDS TO BE EDITED
             #note_x = 500 >= self.falling_notes[i][0]-self.line.get_height()/2 and 500 <= self.falling_notes[i][0]+self.line.get_height()
@@ -248,22 +266,22 @@ class Noted:
             if note_y:
                 #print(f"here{self.falling_notes[i][1]}")
                 if self.locked == False:
-                    if self.right == True:
+                    if self.right:
                         self.score += 1
                         self.falling_notes[i][0] = 300
                         self.falling_notes[i][1] = -randint(100,1000)
                         self.locked = True
-                    elif self.left == True:
+                    elif self.left:
                         self.score += 1
                         self.falling_notes[i][0] = 300
                         self.falling_notes[i][1] = -randint(100,1000)
                         self.locked = True
-                    elif self.up == True:
+                    elif self.up:
                         self.score += 1
                         self.falling_notes[i][0] = 300
                         self.falling_notes[i][1] = -randint(100,1000)
                         self.locked = True
-                    elif self.down == True:
+                    elif self.down:
                         self.score += 1
                         self.falling_notes[i][0] = 300
                         self.falling_notes[i][1] = -randint(100,1000)
@@ -277,16 +295,16 @@ class Noted:
                     #locked to use so it is impossible to lose points while holding button down
                     # also needs to check why you lose 100 points at a time
                     if self.locked == False:
-                        if self.right == True:
+                        if self.right:
                             self.score -= 1
                             self.locked = True
-                        elif self.left == True:
+                        elif self.left:
                             self.score -= 1
                             self.locked = True
-                        elif self.up == True:
+                        elif self.up:
                             self.score -= 1
                             self.locked = True
-                        elif self.down == True:
+                        elif self.down:
                             self.score -= 1
                             self.locked = True
                 else:
@@ -295,51 +313,54 @@ class Noted:
                         self.falling_notes[i][1] = -randint(100,600)
 
                     if self.locked == False:
-                        if self.right == True:
+                        if self.right:
                             self.score -= 1
                             self.locked = True
-                        elif self.left == True:
+                        elif self.left:
                             self.score -= 1
                             self.locked = True
-                        elif self.up == True:
+                        elif self.up:
                             self.score -= 1
                             self.locked = True
-                        elif self.down == True:
+                        elif self.down:
                             self.score -= 1
                             self.locked = True"""
 
-    # Function that is responsible that the button's work as intended
     def button_engine(self):
+        """Function that is responsible that the button's work as intended"""
 
         self.line_x = 0 >= self.note1_x-self.line.get_width() and 0 <= self.note1_x+self.line.get_width()
         self.line_y = 500 >= self.note1_y-self.line.get_height() and 500 <= self.note1_y+self.line.get_height()
 
         if self.line_x and self.line_y:
-            if self.right == True:
+            if self.right:
                 self.used_button = self.display.blit(self.button1_hover_over, (275, 575))
-            elif self.left == True:
+            elif self.left:
                 self.used_button = self.display.blit(self.button1_hover_over, (275, 575))
-            elif self.up == True:
+            elif self.up:
                 self.used_button = self.display.blit(self.button1_hover_over, (275, 575))
-            elif self.down == True:
+            elif self.down:
                 self.used_button = self.display.blit(self.button1_hover_over, (275, 575))
             else:
-                self.used_button = self.display.blit(self.button1, (275, 575)) 
+                self.used_button = self.display.blit(self.button1, (275, 575))
         else:
-            if self.right == True:
+            if self.right:
                 self.used_button = self.display.blit(self.button1_hover_over, (275, 575))
-            elif self.left == True:
+            elif self.left:
                 self.used_button = self.display.blit(self.button1_hover_over, (275, 575))
-            elif self.up == True:
+            elif self.up:
                 self.used_button = self.display.blit(self.button1_hover_over, (275, 575))
-            elif self.down == True:
+            elif self.down:
                 self.used_button = self.display.blit(self.button1_hover_over, (275, 575))
             else:
-                self.used_button = self.display.blit(self.button1, (275, 575)) 
+                self.used_button = self.display.blit(self.button1, (275, 575))
 
-    # Function that loops over and over
-    # Thus making the game flow
     def loop(self):
+        """
+        Function that loops over and over.
+        Thus making the game flow.
+        """
+
         clock = pygame.time.Clock()
 
         while True:
@@ -349,8 +370,11 @@ class Noted:
 
             clock.tick(60)
 
-    # Function that is mostly responsible that the button's internal operating works as intended
     def analyse_events(self):
+        """
+        Function that is mostly responsible
+        that the button's internal operating works as intended.
+        """
 
         self.note1_y += 2
         self.note2_y += 2
@@ -367,7 +391,7 @@ class Noted:
                     self.up = True
                 if event.key == pygame.K_DOWN:
                     self.down = True
- 
+
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
                     self.left = False
@@ -384,10 +408,10 @@ class Noted:
             if event.type == pygame.QUIT:
                 exit()
 
-    #Function that basically draws the game
     def draw_the_game(self):
- 
-        self.display.fill((0,100,100))
+        """Function that basically draws the game."""
+
+        self.display.fill((0, 100, 100))
 
         self.display.blit(self.background, (0, 0))
 
@@ -403,11 +427,11 @@ class Noted:
         pygame.draw.rect(self.display, (0, 0, 0), (10, 10, 150, 28))
         text = fontt.render(f"Score: {self.score}", True, (255, 255, 255))
         self.display.blit(text, (10, 10))
-            
+
         self.button_engine()
-        
+
         pygame.display.flip()
 
-#Used to execute code if the file is run directly
+
 if __name__ == "__main__":
     Noted()
