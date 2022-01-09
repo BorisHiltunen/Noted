@@ -1,8 +1,7 @@
 """main.py: Contains Noted class"""
 
 import pygame
-#Will be used soon
-#from random import randint
+import os
 
 
 class Noted:
@@ -17,9 +16,9 @@ class Noted:
 
         self.download_pictures()
 
-        self.right_note = pygame.mixer.Sound('right_note.wav')
-        self.wrong_timing = pygame.mixer.Sound('wrong_timing.wav')
-        self.music = pygame.mixer.music.load('music.wav')
+        self.right_note = pygame.mixer.Sound(os.path.join("sounds", "right_note.wav"))
+        self.wrong_timing = pygame.mixer.Sound(os.path.join("sounds", "wrong_timing.wav"))
+        self.music = pygame.mixer.music.load(os.path.join("music", "music.wav"))
 
         pygame.mixer.music.play(loops=-1)
 
@@ -35,9 +34,6 @@ class Noted:
         self.score = 0
 
         self.falling_notes = []
-
-        #edit this when many can be initialized
-        #self.note_amount = 10
 
         self.x = 0
         self.y = 500
@@ -74,12 +70,12 @@ class Noted:
     def download_pictures(self):
         """Function that downloads pictures."""
 
-        self.background = pygame.image.load("background.png")
-        self.button1 = pygame.image.load("button1.png")
-        self.button1_hover_over = pygame.image.load("button1_hover_over.png")
-        self.line = pygame.image.load("line.png")
-        self.line_hover_over = pygame.image.load("line_hover_over.png")
-        self.note = pygame.image.load("note.png")
+        self.background = pygame.image.load(os.path.join("images", "background.png"))
+        self.button1 = pygame.image.load(os.path.join("images", "button1.png"))
+        self.button1_hover_over = pygame.image.load(os.path.join("images", "button1_hover_over.png"))
+        self.line = pygame.image.load(os.path.join("images", "line.png"))
+        self.line_hover_over = pygame.image.load(os.path.join("images", "line_hover_over.png"))
+        self.note = pygame.image.load(os.path.join("images", "note.png"))
 
     def line_engine(self):
         """Function that is responsible that the line works as intended."""
@@ -239,93 +235,6 @@ class Noted:
         if self.note4_y > self.height:
             self.note4_y = -100
 
-    # At the moment only watches y.
-    # Therefore needs to be edited
-    # if interested in making multiple lanes for the notes.
-
-    # Function that is responsible that the notes work as intended
-    """def note_engine(self):
-
-        note_y = False
-
-        #self.used_note = self.display.blit(self.note, (self.note1_x, self.note1_y))
-
-        for i in range(self.note_amount):
-            self.falling_notes.append([-1000,self.height])
-
-        for i in range(self.note_amount):
-            #THIS NEEDS TO BE EDITED
-            #note_x = 500 >= self.falling_notes[i][0]-self.line.get_height()/2 and 500 <= self.falling_notes[i][0]+self.line.get_height()
-            #note_x = self.falling_notes[i][1] >= self.x-self.line.get_height()/2 and self.falling_notes[i][1] <= self.x+self.line.get_height()
-            note_y = self.falling_notes[i][1] <= 550 and self.falling_notes[i][1] >= 450
-
-            #print(self.falling_notes[i][1])
-
-            if self.falling_notes[i][1]+self.note.get_height() < self.height+200:
-                self.falling_notes[i][1] += 2
-            if note_y:
-                #print(f"here{self.falling_notes[i][1]}")
-                if self.locked == False:
-                    if self.right:
-                        self.score += 1
-                        self.falling_notes[i][0] = 300
-                        self.falling_notes[i][1] = -randint(100,1000)
-                        self.locked = True
-                    elif self.left:
-                        self.score += 1
-                        self.falling_notes[i][0] = 300
-                        self.falling_notes[i][1] = -randint(100,1000)
-                        self.locked = True
-                    elif self.up:
-                        self.score += 1
-                        self.falling_notes[i][0] = 300
-                        self.falling_notes[i][1] = -randint(100,1000)
-                        self.locked = True
-                    elif self.down:
-                        self.score += 1
-                        self.falling_notes[i][0] = 300
-                        self.falling_notes[i][1] = -randint(100,1000)
-                        self.locked = True
-            else:
-
-                if self.falling_notes[i][0] < -self.line.get_width() or self.falling_notes[i][0] > self.width:
-                    self.falling_notes[i][0] = 275
-                    self.falling_notes[i][1] = -randint(100,600)
-
-                    #locked to use so it is impossible to lose points while holding button down
-                    # also needs to check why you lose 100 points at a time
-                    if self.locked == False:
-                        if self.right:
-                            self.score -= 1
-                            self.locked = True
-                        elif self.left:
-                            self.score -= 1
-                            self.locked = True
-                        elif self.up:
-                            self.score -= 1
-                            self.locked = True
-                        elif self.down:
-                            self.score -= 1
-                            self.locked = True
-                else:
-                    if self.falling_notes[i][1]+self.note.get_height()/2 >= self.height+100:
-                        self.falling_notes[i][0] = 275
-                        self.falling_notes[i][1] = -randint(100,600)
-
-                    if self.locked == False:
-                        if self.right:
-                            self.score -= 1
-                            self.locked = True
-                        elif self.left:
-                            self.score -= 1
-                            self.locked = True
-                        elif self.up:
-                            self.score -= 1
-                            self.locked = True
-                        elif self.down:
-                            self.score -= 1
-                            self.locked = True"""
-
     def button_engine(self):
         """Function that is responsible that the button's work as intended"""
 
@@ -418,10 +327,6 @@ class Noted:
         self.line_engine()
 
         self.note_engine()
-
-        #edit this when many can be initialized
-        #for i in range(self.note_amount):
-            #self.display.blit(self.note, (self.falling_notes[i][0], self.falling_notes[i][1]))
 
         fontt = pygame.font.SysFont("Arial", 24)
         pygame.draw.rect(self.display, (0, 0, 0), (10, 10, 150, 28))

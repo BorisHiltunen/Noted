@@ -3,6 +3,6 @@
     "python.linting.pycodestyleEnabled": true,
     "python.linting.pylintEnabled": true,
     "python.linting.pylintArgs": [
-        "--extension-pkg-whitelist=lxml"  // The extension is "lxml" not "1xml"
+        "--extension-pkg-whitelist=pygame"
     ]
 }
