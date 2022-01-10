@@ -27,3 +27,33 @@ Boris Hiltunen ([BorisHiltunen](https://github.com/BorisHiltunen))
 
 - Run
 -> python main.py
+
+## Game's structure
+```GAP
+- ├── env
+- ├── game
+- ├── refactored
+- |   ├── app
+- |   |   ├── __init__.py
+- |   |   ├── button_management.py
+- |   |   ├── event_analyser.py
+- |   |   ├── file_management.py
+- |   |   ├── game_data.py
+- |   |   ├── game_visualizer.py
+- |   |   ├── line_management.py
+- |   |   ├── note_management.py
+- |   |   ├── roller.py
+- |   ├── images
+- |   ├── music
+- |   ├── sounds
+- |   ├── __init__.py
+- |   ├── runner.py
+- ├── unrefactored
+- ├── testing
+- ├── versions
+- ├── .qitignore
+- ├── picture_of_the_game.jpg
+- ├── picture_of_the_game.png
+- ├── README.md
+- ├── requirements
+```
