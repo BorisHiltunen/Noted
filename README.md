@@ -57,3 +57,13 @@ Boris Hiltunen ([BorisHiltunen](https://github.com/BorisHiltunen))
 - ├── README.md
 - ├── requirements
 ```
+
+
+## Demonstration
+
+<p align="center">
+  <img src="https://github.com/BorisHiltunen/Noted/raw/main/picture_of_the_game.png"/>
+</p>
+
+![picture_of_the_game](https://user-images.githubusercontent.com/90689146/148769404-8f3b3eb9-df52-41ca-b806-8ba29650241c.JPG)
+
